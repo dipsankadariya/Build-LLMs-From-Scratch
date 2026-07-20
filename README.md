@@ -16,7 +16,7 @@ This repository contains the complete code implementation of building LLMs from 
 The codebase follows the step-by-step implementation guide from the book **"Build a Large Language Model (From Scratch)"** by Sebastian Raschka.
 
 <p align="center">
-  <img src="images/book.png" width="230" alt="Build a Large Language Model (From Scratch)">
+  <img src="/book.png" width="230" alt="Build a Large Language Model (From Scratch)">
   <br>
   <sub><i>Build a Large Language Model (From Scratch) — Sebastian Raschka</i></sub>
 </p>
