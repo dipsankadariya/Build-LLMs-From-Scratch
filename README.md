@@ -11,7 +11,7 @@
 
 ## 📖 Overview
 
-This repository contains the complete code implementation of building LLMs from scratch where I built a complete **124-million-parameter GPT-2 (GPT-2 small)** from scratch using pure PyTorch, without relying on high-level transformer frameworks.
+This repository contains the complete code implementation of building LLMs from scratch where I built a complete **124-million-parameter GPT-2 (GPT-2 small)** from scratch using pure PyTorch, without relying on high-level transformer frameworks. The goal of this project was to understand the **"nuts and bolts"** of how LLMs work by building everything from the ground up—from tokenization and attention mechanisms to pretraining, instruction fine-tuning, and building a ChatGPT-like assistant.
 
 The codebase follows the step-by-step implementation guide from the book **"Build a Large Language Model (From Scratch)"** by Sebastian Raschka.
 
@@ -20,8 +20,6 @@ The codebase follows the step-by-step implementation guide from the book **"Buil
   <br>
   <sub><i>Build a Large Language Model (From Scratch) — Sebastian Raschka</i></sub>
 </p>
-
-The goal of this project was to understand the **"nuts and bolts"** of how LLMs work by building everything from the ground up—from tokenization and attention mechanisms to pretraining, instruction fine-tuning, and building a ChatGPT-like assistant.
 
 Each folder in this repository corresponds to different parts of the implementation, containing the main code files for the respective chapters.
 
