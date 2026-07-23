@@ -48,7 +48,7 @@ class GPTDatasetV1(Dataset):
 
 # the GPTDatasetV1 (stores all input-target pairs) so wee need to crete a helper class that groups samples into mini-batches
 
-def create_dataloader(txt,batch_size=4,max_length=256,stride=128,shuffle=True,drop_last=True,num_workers=0):
+def create_dataloader_v1(txt,batch_size=4,max_length=256,stride=128,shuffle=True,drop_last=True,num_workers=0):
     #initialize the tokenizer
     tokenizer=tiktoken.get_encoding("gpt2")
     #create the dataset using the claass(instantiating)
