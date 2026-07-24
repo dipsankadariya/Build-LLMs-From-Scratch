@@ -222,33 +222,18 @@ class GPTModel(nn.Module):
 def generate_text_simple(model, input_tokens, max_new_tokens, context_size):
     generated_tokens = input_tokens
 
-    for step in range(max_new_tokens):
-        print(f"\n ******************{step + 1} ****************\n")
-        sequence_len = generated_tokens.shape[1]
+    for _ in range(max_new_tokens):
         model_input = generated_tokens[:, -context_size:]
-
-        print("\n input sent to the model")
-        print(model_input)
-        print(model_input.shape)
 
         with torch.no_grad():
             output_logits = model(model_input)
 
-        print("\n model output shape: ")
-        print(output_logits.shape)
-
         last_position_logits = output_logits[:, -1, :]
-
-        print("\n last position logits: ")
-        print(last_position_logits.shape)
 
         probabilities = torch.softmax(
             last_position_logits,
             dim=-1
         )
-
-        print("\n probabilites vector:")
-        print(probabilities.shape)
 
         predicted_token = torch.argmax(
             probabilities,
@@ -256,16 +241,9 @@ def generate_text_simple(model, input_tokens, max_new_tokens, context_size):
             keepdim=True
         )
 
-        print("\n predicted token id")
-        print(predicted_token)
-
         generated_tokens = torch.cat(
             (generated_tokens, predicted_token),
             dim=1
         )
-
-        print("\n sequence after appending")
-        print(generated_tokens)
-        print("new_shape:", generated_tokens.shape)
 
     return generated_tokens
