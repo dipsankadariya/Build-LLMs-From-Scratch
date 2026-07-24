@@ -11,7 +11,7 @@
 
 ## 📖 Overview
 
-This repository contains the complete code implementation of building LLMs from scratch where I built a complete Language model of 124M parameters from scratch using pure PyTorch, without relying on high-level transformer frameworks. The goal of this project was to understand the **"nuts and bolts"** of how LLMs work by building everything from the ground up—from tokenization and attention mechanisms to pretraining, instruction fine-tuning, and building a ChatGPT-like assistant.
+This repository contains the complete code implementation of building LLMs from scratch where I build a complete Large Language model(~124M) and every major components of it from scratch using pure PyTorch, without relying on high-level transformer frameworks. The goal of this project was to understand the **"nuts and bolts"** of how LLMs work by building everything from the ground up—from tokenization and attention mechanisms to pretraining, instruction fine-tuning, and building a ChatGPT-like assistant.Through this journey, I implemented every major component of a modern decoder-only transformer using only PyTorch, gaining a deep understanding of how large language models process text, learn from data, and generate coherent responses. This repository serves as both a learning resource and a complete reference implementation of an LLM built from first principles.
 
 The codebase follows the step-by-step implementation guide from the book **"Build a Large Language Model (From Scratch)"** by Sebastian Raschka.
 
@@ -23,7 +23,6 @@ The codebase follows the step-by-step implementation guide from the book **"Buil
 
 Each folder in this repository corresponds to different parts of the implementation, containing the main code files for the respective chapters.
 
-Through this journey, I implemented every major component of a modern decoder-only transformer using only PyTorch, gaining a deep understanding of how large language models process text, learn from data, and generate coherent responses. This repository serves as both a learning resource and a complete reference implementation of an LLM built from first principles.
 
 ## 🚀 Topics Implemented from Scratch
 
