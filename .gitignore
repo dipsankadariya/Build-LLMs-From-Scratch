@@ -1,0 +1,77 @@
+# ==========================
+# Python
+# ==========================
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+
+# ==========================
+# Jupyter Notebook
+# ==========================
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+
+# ==========================
+# Model Files
+# ==========================
+
+# Trained model weights
+*.pth
+*.pt
+*.bin
+*.safetensors
+
+# GPT-2 downloaded weights
+04- Pretraining/gpt2/
+
+
+# ==========================
+# Logs and Temporary Files
+# ==========================
+
+*.log
+*.tmp
+
+
+# ==========================
+# OS Files
+# ==========================
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+
+# ==========================
+# IDE Settings
+# ==========================
+
+.vscode/
+.idea/
+
+
+# ==========================
+# Data Files
+# ==========================
+
+# Large datasets
+*.csv
+*.jsonl
+*.txt
+
+# Dataset folders
+data/
+datasets/

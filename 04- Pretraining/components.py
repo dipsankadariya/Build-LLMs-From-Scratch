@@ -74,7 +74,7 @@ class MaskedMultiHeadAttention(nn.Module):
         self.W_value=nn.Linear(input_dim,output_dim,bias=qkv_bias)
         self.dropout=nn.Dropout(dropout)
         self.register_buffer("mask",torch.triu(torch.ones(context_length,context_length),diagonal=1))
-        self.output_proj= nn.Linear(output_dim,output_dim)
+        self.out_proj = nn.Linear(output_dim, output_dim)
 
 
     def forward(self, x):
@@ -115,7 +115,7 @@ class MaskedMultiHeadAttention(nn.Module):
             self.output_dim
         )
 
-        context_vec = self.output_proj(context_vec)
+        context_vec = self.out_proj(context_vec)
         return context_vec
 
 
@@ -203,7 +203,7 @@ class GPTModel(nn.Module):
         self.trf_blocks=nn.Sequential(
             *[TransformerBlock(cfg) for _ in range(cfg["n_layers"])]
         )
-        self.final_norm=nn.LayerNorm(cfg["emb_dim"])
+        self.final_norm=LayerNorm(cfg["emb_dim"])
         self.out_head=nn.Linear(cfg["emb_dim"],cfg["vocab_size"],bias=False)
 
     def forward(self,in_idx):
@@ -247,3 +247,31 @@ def generate_text_simple(model, input_tokens, max_new_tokens, context_size):
         )
 
     return generated_tokens
+
+
+def generate(model, input_tokens, max_new_tokens, context_size,
+             temperature=1.0, top_k=None, eos_id=None):
+    for _ in range(max_new_tokens):
+        input_tokens = input_tokens[:, -context_size:]
+        with torch.no_grad():
+            logits = model(input_tokens)
+        logits = logits[:, -1, :]
+        if top_k is not None:
+            top_logits, _ = torch.topk(logits, top_k)
+            min_val = top_logits[:, -1].unsqueeze(-1)
+            logits = torch.where(
+                logits < min_val,
+                torch.tensor(float("-inf")).to(logits.device),
+                logits
+            )
+        if temperature > 0.0:
+            logits = logits / temperature
+            probs = torch.softmax(logits, dim=-1)
+            idx_next = torch.multinomial(probs, num_samples=1)
+        else:
+            idx_next = torch.argmax(logits, dim=-1, keepdim=True)
+
+        if eos_id is not None and idx_next.item() == eos_id:
+            break
+        input_tokens = torch.cat((input_tokens, idx_next), dim=1)
+    return input_tokens
